@@ -11,7 +11,7 @@ function App() {
 
   const fetchTasks=async()=>
   {
-    const res=await axios.get("http://localhost:5000/api/tasks");
+    const res=await axios.get("https://task-backend-d65y.onrender.com/api/tasks");
     setTasks(res.data);
   };
 
@@ -22,7 +22,7 @@ function App() {
     alert("Please enter a task");
     return;
   }
-    await axios.post("http://localhost:5000/api/tasks/add",{title});
+    await axios.post("https://task-backend-d65y.onrender.com/api/tasks/add",{title});
     setTitle("")
     fetchTasks();
   };
@@ -30,13 +30,13 @@ function App() {
 
   const deleteTask=async(id)=>
   {
-    await axios.delete(`http://localhost:5000/api/tasks/${id}`);
+    await axios.delete(`https://task-backend-d65y.onrender.com/api/tasks/${id}`);
     fetchTasks();
   }
   const editTask = async (id) => {
   const newTitle = prompt("Enter new title");
   if (!newTitle) return;
-  await axios.put(`http://localhost:5000/api/tasks/${id}`, {
+  await axios.put(`https://task-backend-d65y.onrender.com/api/tasks/${id}`, {
     title: newTitle
   });
   fetchTasks();
@@ -44,7 +44,7 @@ function App() {
 
 
   const toggleComplete = async (task) => {
-  await axios.put(`http://localhost:5000/api/tasks/${task._id}`, {
+  await axios.put(`https://task-backend-d65y.onrender.com/api/tasks/${task._id}`, {
     completed: !task.completed
   });
   fetchTasks();
